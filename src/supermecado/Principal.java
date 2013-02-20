@@ -2,9 +2,11 @@ package supermecado;
 
 import java.util.Date;
 
+import supermercado.exception.PessoaException;
+
 public class Principal {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws PessoaException {
 		// Criando Objeto usando construtor default
 //		Pessoa p = new Pessoa();
 //		p.setNome("Maria Cristina");
@@ -29,7 +31,12 @@ public class Principal {
 //		pj1 = null;
 //		System.gc();
 		
-		Cliente c = new Cliente("Jo‹o Paulo", new Date(), "123 SSP/MT", "000.000.000-00", 1, 1000);
+		try {
+			Cliente c = new Cliente("Jo", new Date(), "123 SSP/MT", "000.000.000-00", 1, 1000);
+			
+		} catch (PessoaException e) {
+			Util.showError(e.getMessage());
+		}
 		System.out.println(c);
 	}
 

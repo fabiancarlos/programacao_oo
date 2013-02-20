@@ -2,9 +2,11 @@ package supermecado;
 
 import java.util.Date;
 
+import supermercado.exception.PessoaException;
+
 /**
  * Classe especializada de Pessoa
- * @author Jo‹o Paulo D. Preti
+ * @author Joï¿½o Paulo D. Preti
  *
  */
 public abstract class PessoaFisica extends Pessoa {
@@ -20,26 +22,26 @@ public abstract class PessoaFisica extends Pessoa {
 		this.rg = "";
 	}
 
-	//Construtor com todos os atributos de Pessoa F’sica 
-	public PessoaFisica(String nome, Date dataNascimento, String rg, String cpf) {
+	//Construtor com todos os atributos de Pessoa Fï¿½sica 
+	public PessoaFisica(String nome, Date dataNascimento, String rg, String cpf) throws PessoaException {
 		super(nome, dataNascimento);
 		this.cpf = cpf;
 		this.rg = rg;
 	}
 
-	//MŽtodo acessor de CPF
+	//Mï¿½todo acessor de CPF
 	public String getCpf() {
 		return cpf;
 	}
-	//MŽtodo acessor de RG
+	//Mï¿½todo acessor de RG
 	public String getRg() {
 		return rg;
 	}
-	//MŽtodo modificador de CPF
+	//Mï¿½todo modificador de CPF
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	//MŽtodo modificador de RG
+	//Mï¿½todo modificador de RG
 	public void setRg(String rg) {
 		this.rg = rg;
 	}

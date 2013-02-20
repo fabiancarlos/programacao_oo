@@ -2,6 +2,8 @@ package supermecado;
 
 import java.util.Date;
 
+import supermercado.exception.PessoaException;
+
 public class Funcionario extends PessoaFisica {
 	
 	private Date dataAdmissao;
@@ -22,7 +24,7 @@ public class Funcionario extends PessoaFisica {
 		this.salario = 0;
 	}
 	
-	public Funcionario(String nome, Date dataNascimento, String rg, String cpf, Date dataAdmissao, float salario) {
+	public Funcionario(String nome, Date dataNascimento, String rg, String cpf, Date dataAdmissao, float salario) throws PessoaException {
 		super(nome, dataNascimento, rg, cpf);
 		this.dataAdmissao = dataAdmissao;
 		this.salario = salario;
@@ -42,8 +44,8 @@ public class Funcionario extends PessoaFisica {
 	
 	@Override
 	public String toString() {
-		return super.toString() + "Data Admiss‹o: " + dataAdmissao + "\n" +
-								  "Sal‡rio: " + salario + "\n";
+		return super.toString() + "Data Admissï¿½o: " + dataAdmissao + "\n" +
+								  "Salï¿½rio: " + salario + "\n";
 	}
 
 }

@@ -2,9 +2,11 @@ package supermecado;
 
 import java.util.Date;
 
+import supermercado.exception.PessoaException;
+
 /**
  * Classe especializada de Pessoa
- * @author João Paulo D. Preti
+ * @author JoÔøΩo Paulo D. Preti
  *
  */
 public class PessoaJuridica extends Pessoa {
@@ -24,34 +26,34 @@ public class PessoaJuridica extends Pessoa {
 	
 	//Construtor com todos os atributos de PessoaJuridica
 	public PessoaJuridica(String nome, Date dataNascimento, String cnpj, String inscricaoEstadual,
-			String nomeFantasia) {
+			String nomeFantasia) throws PessoaException {
 		super(nome, dataNascimento);
 		this.cnpj = cnpj;
 		this.inscricaoEstadual = inscricaoEstadual;
 		this.nomeFantasia = nomeFantasia;
 	}
 
-	//Método acessor de cnpj
+	//MÔøΩtodo acessor de cnpj
 	public String getCnpj() {
 		return cnpj;
 	}
-	//Método acessor de inscricaoEstadual
+	//MÔøΩtodo acessor de inscricaoEstadual
 	public String getInscricaoEstadual() {
 		return inscricaoEstadual;
 	}
-	//Método acessor de nomeFantasia
+	//MÔøΩtodo acessor de nomeFantasia
 	public String getNomeFantasia() {
 		return nomeFantasia;
 	}
-	//Método modificador de cnpj
+	//MÔøΩtodo modificador de cnpj
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
-	//Método modificador de instricaoEstadual
+	//MÔøΩtodo modificador de instricaoEstadual
 	public void setInscricaoEstadual(String inscricaoEstadual) {
 		this.inscricaoEstadual = inscricaoEstadual;
 	}
-	//Método modificador de nomeFantasia
+	//MÔøΩtodo modificador de nomeFantasia
 	public void setNomeFantasia(String nomeFantasia) {
 		this.nomeFantasia = nomeFantasia;
 	}
@@ -89,7 +91,7 @@ public class PessoaJuridica extends Pessoa {
 		return super.toString() +
 			   "Nome Fantasia: " + nomeFantasia + "\n" + 
 			   "CNPJ: " + cnpj + "\n" + 
-			   "Inscrição Estadual: " + inscricaoEstadual + "\n";
+			   "InscriÔøΩÔøΩo Estadual: " + inscricaoEstadual + "\n";
 	}
 	
 }

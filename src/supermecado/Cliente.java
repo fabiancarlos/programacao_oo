@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.swing.JOptionPane;
 
+import supermercado.exception.PessoaException;
+
 public class Cliente extends PessoaFisica {
 	
 	private int numeroFidelidade;
@@ -15,7 +17,7 @@ public class Cliente extends PessoaFisica {
 		this.pontosFidelidade = 0;
 	}
 	
-	public Cliente(String nome, Date dataNascimento, String rg, String cpf, int numeroFidelidade, int pontosFidelidade) {
+	public Cliente(String nome, Date dataNascimento, String rg, String cpf, int numeroFidelidade, int pontosFidelidade) throws PessoaException {
 		super(nome, dataNascimento,rg,cpf);
 		this.numeroFidelidade = numeroFidelidade;
 		this.pontosFidelidade = pontosFidelidade;
@@ -36,7 +38,7 @@ public class Cliente extends PessoaFisica {
 
 	@Override
 	public String toString() {
-		return super.toString() + "Nœm, Fidelidade: " + numeroFidelidade + "\n" +
+		return super.toString() + "Nï¿½m, Fidelidade: " + numeroFidelidade + "\n" +
 							      "Pontos: " + pontosFidelidade + "\n";
 	}
 	

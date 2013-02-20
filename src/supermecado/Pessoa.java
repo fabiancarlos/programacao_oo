@@ -2,9 +2,11 @@ package supermecado;
 
 import java.util.Date;
 
+import supermercado.exception.PessoaException;
+
 /**
- * Classe que representa um conceito genŽrico/abstrato dos tipos de pessoas que existem no sistema.
- * @author Jo‹o Paulo D. Preti
+ * Classe que representa um conceito genï¿½rico/abstrato dos tipos de pessoas que existem no sistema.
+ * @author Joï¿½o Paulo D. Preti
  *
  */
 public abstract class Pessoa {
@@ -21,8 +23,8 @@ public abstract class Pessoa {
 		this.endereco = new Endereco();
 	}
 	
-	//Construtor que j‡ inicializa o objeto com todos os dados de pessoa
-	public Pessoa(String nome, Date dataNascimento) {
+	//Construtor que jï¿½ inicializa o objeto com todos os dados de pessoa
+	public Pessoa(String nome, Date dataNascimento) throws PessoaException {
 		setNome(nome);
 		this.dataNascimento = dataNascimento;
 		this.endereco = new Endereco();
@@ -36,25 +38,27 @@ public abstract class Pessoa {
 		this.endereco = endereco;
 	}
 
-	//MŽtodo acessor da data de nascimento
+	//Mï¿½todo acessor da data de nascimento
 	public Date getDataNascimento() {
 		return dataNascimento;
 	}
 	
-	//MŽtodo acessor do nome
+	//Mï¿½todo acessor do nome
 	public String getNome() {
 		return nome.toUpperCase();
 	}
 
-	//MŽtodo modificador da data de nascimento
+	//Mï¿½todo modificador da data de nascimento
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 
-	//mŽtodo modificador do nome
-	public void setNome(String nome) {
-		if (nome.length()>5 && nome.length() < 60)
-			this.nome = nome;
+	//mï¿½todo modificador do nome
+	public void setNome(String nome) throws PessoaException {
+		if (nome == null || nome.length()<=5 && nome.length() > 60)
+			throw new PessoaException(PessoaException.NOME_INVALIDO);
+		
+		this.nome = nome;
 	}
 	
 	/**
@@ -69,7 +73,7 @@ public abstract class Pessoa {
 	}
 	@Override
 	public void finalize() {
-		System.out.println("Objeto de nome: " + nome + " foi removido da mem—ria!");
+		System.out.println("Objeto de nome: " + nome + " foi removido da memï¿½ria!");
 	}
 
 }

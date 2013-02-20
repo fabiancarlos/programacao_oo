@@ -5,6 +5,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import supermercado.exception.PessoaException;
+
 public class BancoDeDados {
 
 	public static ArrayList<Cliente> 		 		clientes = new ArrayList<Cliente>();
@@ -34,51 +36,54 @@ public class BancoDeDados {
 		
 		//Cadastro de FormaPagamento
 		formasPagamento.add(new FormaPagamento("Dinheiro",(byte)1));
-		formasPagamento.add(new FormaPagamento("DŽbito",(byte)1));
+		formasPagamento.add(new FormaPagamento("Dï¿½bito",(byte)1));
 		formasPagamento.add(new FormaPagamento("Cheque",(byte)3));
-		formasPagamento.add(new FormaPagamento("Cart‹o de CrŽdito",(byte)4));
+		formasPagamento.add(new FormaPagamento("Cartï¿½o de Crï¿½dito",(byte)4));
 		
 		//Cadastro de Estado
 		estados.add(new Estado("Mato Grosso","MT","Centro-Oeste"));
 		estados.add(new Estado("Mato Grosso do Sul","MS","Centro-Oeste"));
 		estados.add(new Estado("Distrito Federal","DF","Centro-Oeste"));
-		estados.add(new Estado("S‹o Paulo","SP","Sudeste"));
+		estados.add(new Estado("Sï¿½o Paulo","SP","Sudeste"));
 		estados.add(new Estado("Rio de Janeiro","RJ","Sudeste"));
 		
 		//Cadastro de Cidade
-		cidades.add(new Cidade("Cuiab‡","65",estados.get(0)));
-		cidades.add(new Cidade("Rondon—polis","65",estados.get(0)));
-		cidades.add(new Cidade("S‹o Paulo","11",estados.get(3)));
-		
-		//Cadastro de Cliente
-		clientes.add(new Cliente("Jo‹o Paulo",new Date(),"1234","123.456.789-00",1,0));
-		clientes.get(0).setEndereco(new Endereco("Rua x","y","12345-000","apto 001","12",cidades.get(0)));
-		
-		clientes.add(new Cliente("Maria Cristina",new Date(),"4321","789.456.123-11",2,0));
-		clientes.get(1).setEndereco(new Endereco("Rua da Maria","xyz","54321-000","apto 002","123",cidades.get(1)));
-		
-		//Cadastro de Funcionario
-		funcionarios.add(new Funcionario("Pedro Paulo",new Date(),"1234","123.456.789-00",new Date(),800));
-		funcionarios.get(0).setEndereco(new Endereco("Rua x","y","12345-000","apto 001","12",cidades.get(0)));
-		
-		//Cadastro de Pessoa Juridica
-		pessoasJuridicas.add(new PessoaJuridica("Empresa sei la do que LTDA", new Date(), "12.123.123/0000-12", "12345", "Empresa sabe nada"));
-		pessoasJuridicas.get(0).setEndereco(new Endereco("Rua da Empresa sei la","abc","00000-000","","321",cidades.get(0)));
-		
-		pessoasJuridicas.add(new PessoaJuridica("Empresa POO LTDA", new Date(), "22.111.333/0000-21", "44", "Empresa POO com Java"));
-		pessoasJuridicas.get(1).setEndereco(new Endereco("Rua da Empresa POO","paradigma","11111-222","","888",cidades.get(0)));
+		cidades.add(new Cidade("Cuiabï¿½","65",estados.get(0)));
+		cidades.add(new Cidade("Rondonï¿½polis","65",estados.get(0)));
+		cidades.add(new Cidade("Sï¿½o Paulo","11",estados.get(3)));
+		try {
+			//Cadastro de Cliente
+			clientes.add(new Cliente("Joï¿½o Paulo",new Date(),"1234","123.456.789-00",1,0));
+			clientes.get(0).setEndereco(new Endereco("Rua x","y","12345-000","apto 001","12",cidades.get(0)));
+			
+			clientes.add(new Cliente("Maria Cristina",new Date(),"4321","789.456.123-11",2,0));
+			clientes.get(1).setEndereco(new Endereco("Rua da Maria","xyz","54321-000","apto 002","123",cidades.get(1)));
+			
+			//Cadastro de Funcionario
+			funcionarios.add(new Funcionario("Pedro Paulo",new Date(),"1234","123.456.789-00",new Date(),800));
+			funcionarios.get(0).setEndereco(new Endereco("Rua x","y","12345-000","apto 001","12",cidades.get(0)));
+			
+			//Cadastro de Pessoa Juridica
+			pessoasJuridicas.add(new PessoaJuridica("Empresa sei la do que LTDA", new Date(), "12.123.123/0000-12", "12345", "Empresa sabe nada"));
+			pessoasJuridicas.get(0).setEndereco(new Endereco("Rua da Empresa sei la","abc","00000-000","","321",cidades.get(0)));
+			
+			pessoasJuridicas.add(new PessoaJuridica("Empresa POO LTDA", new Date(), "22.111.333/0000-21", "44", "Empresa POO com Java"));
+			pessoasJuridicas.get(1).setEndereco(new Endereco("Rua da Empresa POO","paradigma","11111-222","","888",cidades.get(0)));
+		} catch (PessoaException e) {
+			Util.showError(e.getMessage());
+		}
 		
 		//Cadastro de Produto
-		produtos.add(new Produto("L‡pis",200,1.80f,"",getUnidadeMedidaBySigla("UN"),tiposProduto.get(3)));
+		produtos.add(new Produto("Lï¿½pis",200,1.80f,"",getUnidadeMedidaBySigla("UN"),tiposProduto.get(3)));
 		produtos.add(new Produto("Borracha",200,2.95f,"",getUnidadeMedidaBySigla("CX"),tiposProduto.get(3)));
 		
 		//Cadastro de Fornecedor
 		fornecedores.add(new PessoaJuridicaProduto(pessoasJuridicas.get(0), produtos.get(0)));
 		fornecedores.add(new PessoaJuridicaProduto(pessoasJuridicas.get(0), produtos.get(1)));
 		fornecedores.add(new PessoaJuridicaProduto(pessoasJuridicas.get(1), produtos.get(0)));
-		fornecedores.add(new PessoaJuridicaProduto(pessoasJuridicas.get(1), produtos.get(1)));
+		fornecedores.add(new PessoaJuridicaProduto(pessoasPessoaExceptionJuridicas.get(1), produtos.get(1)));
 		
-		//Emiss‹o de Nota Fiscal
+		//Emissï¿½o de Nota Fiscal
 		ArrayList<ItemNotaFiscal> itens = new ArrayList<ItemNotaFiscal>();
 		itens.add(new ItemNotaFiscal(2, produtos.get(0).getValorUnitario(), produtos.get(0)));
 		itens.add(new ItemNotaFiscal(1, produtos.get(1).getValorUnitario(), produtos.get(1)));
@@ -191,7 +196,7 @@ public class BancoDeDados {
 		for (Cidade c : getCidadeByEstado(getEstadoBySigla("MT")))
 			System.out.println(c.getNome());
 		
-		System.out.println(getCidadeByNome(getEstadoBySigla("MT"), "Cuiab‡").getDdd());
+		System.out.println(getCidadeByNome(getEstadoBySigla("MT"), "Cuiabï¿½").getDdd());
 		
 		System.out.println(getFormaPagamentoByNome("Cheque").getMaximoParcelas());
 		
