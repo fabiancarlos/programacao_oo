@@ -45,7 +45,7 @@ public class Util {
 	
 	public static void valida(Object obj)throws ValidaException{
 		StringBuffer msg = new StringBuffer();
-		Field[] atributos = obj.getClass().getFields();
+		Field[] atributos = obj.getClass().getDeclaredFields();
 		for(Field f : atributos){
 			f.setAccessible(true);
 			Validacao val = f.getAnnotation(Validacao.class);
