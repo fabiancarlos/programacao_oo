@@ -1,6 +1,7 @@
 package supermecado;
 
 import supermercado.anotacao.Validacao;
+import supermercado.exception.ValidaException;
 					  
 public class Produto {
 	
@@ -95,7 +96,7 @@ public class Produto {
 		p.setTipoProduto(new TipoProduto("Tipo X"));
 		try {
 			Util.valida(p);
-		} catch (Exception e) {
+		} catch (ValidaException e) {
 			Util.showError(e.getMessage());
 		}
 	}

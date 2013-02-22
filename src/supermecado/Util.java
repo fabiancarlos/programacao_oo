@@ -1,6 +1,7 @@
 package supermecado;
 
 import java.lang.reflect.Field;
+import java.text.MessageFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -49,10 +50,10 @@ public class Util {
 		for(Field f : atributos){
 			f.setAccessible(true);
 			Validacao val = f.getAnnotation(Validacao.class);
-			if (val!= null && val.requerido()) {
+			if (val != null && val.requerido()) {
 				try {
 					if (f.get(obj) == null) {
-						msg.append(f.getName() + ": " + ValidaException.CAMPO_OBRIGATORIO + "\n");
+						msg.append(MessageFormat.format(ValidaException.CAMPO_OBRIGATORIO, f.getName()));
 					}
 				} catch (Exception e) {
 					e.printStackTrace();

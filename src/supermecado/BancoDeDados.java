@@ -81,7 +81,7 @@ public class BancoDeDados {
 		fornecedores.add(new PessoaJuridicaProduto(pessoasJuridicas.get(0), produtos.get(0)));
 		fornecedores.add(new PessoaJuridicaProduto(pessoasJuridicas.get(0), produtos.get(1)));
 		fornecedores.add(new PessoaJuridicaProduto(pessoasJuridicas.get(1), produtos.get(0)));
-		fornecedores.add(new PessoaJuridicaProduto(pessoasPessoaExceptionJuridicas.get(1), produtos.get(1)));
+//		fornecedores.add(new PessoaJuridicaProduto(pessoasPessoaExceptionJuridicas.get(1), produtos.get(1)));
 		
 		//Emiss�o de Nota Fiscal
 		ArrayList<ItemNotaFiscal> itens = new ArrayList<ItemNotaFiscal>();
