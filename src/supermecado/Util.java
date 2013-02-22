@@ -1,10 +1,14 @@
 package supermecado;
 
+import java.lang.reflect.Field;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.swing.JOptionPane;
+
+import supermercado.anotacao.Validacao;
+import supermercado.exception.ValidaException;
 
 public class Util {
 	
@@ -37,6 +41,26 @@ public class Util {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	
+	public static void valida(Object obj)throws ValidaException{
+		StringBuffer msg = new StringBuffer();
+		Field[] atributos = obj.getClass().getFields();
+		for(Field f : atributos){
+			f.setAccessible(true);
+			Validacao val = f.getAnnotation(Validacao.class);
+			if (val!= null && val.requerido()) {
+				try {
+					if (f.get(obj) == null) {
+						msg.append(f.getName() + ": " + ValidaException.CAMPO_OBRIGATORIO + "\n");
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		
 	}
 	
 	public static void main(String[] args) {
