@@ -1,13 +1,19 @@
 package supermecado;
+
+import supermercado.anotacao.Validacao;
 					  
 public class Produto {
-
+	
+	@Validacao(requerido=true)
 	private String nome;
+	
 	private float qtde;
 	private float valorUnitario;
 	private String localizacao;
-	private UnidadeMedida unidadeMedida; //agregação
-	private TipoProduto tipoProduto; //agregação
+	
+	@Validacao(requerido=true)	
+	private UnidadeMedida unidadeMedida; //agregaÔøΩÔøΩo
+	private TipoProduto tipoProduto; //agregaÔøΩÔøΩo
 	
 	public Produto() {
 		super();
@@ -81,6 +87,17 @@ public class Produto {
 	
 	public String toString() {
 		return nome + " (" + qtde + " " + unidadeMedida + ")" + " - R$ " + valorUnitario + "\n"; 
+	}
+	
+	public static void main(String[] args){
+		Produto p = new Produto();
+		p.setUnidadeMedida(BancoDeDados.getUnidadeMedidaBySigla("KG"));
+		p.setTipoProduto(new TipoProduto("Tipo X"));
+		try {
+			Util.valida(p);
+		} catch (Exception e) {
+			Util.showError(e.getMessage());
+		}
 	}
 	
 }
